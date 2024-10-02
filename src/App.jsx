@@ -34,6 +34,10 @@ function App() {
     })
     setTasks(newTasks)
   }
+  function deleteTask(taskId) {
+    const newTasks = tasks.filter((task) => task.id !== taskId) // mantém todas as tasks que forem diferente da que a gente clicou
+    setTasks(newTasks)
+  }
   return (
     <div className="w-screen h-screen bg-zinc-900 flex justify-center p-6 ">
       <div className=" w-[500px] space-y-4 ">
@@ -41,7 +45,11 @@ function App() {
           Gerenciador de Tarefas
         </h1>
         <AddTask />
-        <Tasks tasks={tasks} onTasksCompleted={onTasksCompleted} />
+        <Tasks
+          tasks={tasks}
+          onTasksCompleted={onTasksCompleted}
+          deleteTask={deleteTask}
+        />
       </div>
     </div>
   )
