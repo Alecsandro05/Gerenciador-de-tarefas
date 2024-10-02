@@ -1,21 +1,45 @@
-const AddTask = () => {
+import { useState } from "react"
+
+const AddTask = ({ onAddTasksSubmit }) => {
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value)
+  }
+
+  const handleDescriptonChange = (event) => {
+    setDescription(event.target.value)
+  }
   return (
-    <div className="bg-zinc-800  w-full p-3 space-y-6 py-6 rounded-lg">
-      <div className="">
-        <input
-          type="text"
-          placeholder="Título da tarefa"
-          className="w-full rounded-md px-3 py-3 outline-none"
-        />
-      </div>
-      <div className="">
-        <input
-          type="text"
-          placeholder="Descrição da tarefa"
-          className="w-full rounded-md px-3 py-3 outline-none"
-        />
-      </div>
-      <button className="p-4 bg-green-600 w-full">Adicionar</button>
+    <div className="space-y-4 bg-zinc-800 px-4 py-6 rounded-lg shadow-lg">
+      <input
+        type="text"
+        placeholder="Título da tarefa"
+        className="w-full rounded-md px-3 py-3 outline-none"
+        onChange={handleTitleChange}
+      />
+
+      <input
+        type="text"
+        placeholder="Descrição da tarefa"
+        className="w-full rounded-md px-4 py-2 outline-none "
+        onChange={handleDescriptonChange}
+      />
+
+      <button
+        onClick={() => {
+          if (!title.trim() || !description.trim()) {
+            //trim() tira os espaços em branco
+            alert("preencha todos os camppos")
+            return
+          }
+          onAddTasksSubmit(title, description)
+        }}
+        className="px-4 py-2 bg-green-600 w-full rounded-md font-medium"
+      >
+        Adicionar
+      </button>
     </div>
   )
 }

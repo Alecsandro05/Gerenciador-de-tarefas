@@ -23,6 +23,17 @@ function App() {
       isCompleted: false,
     },
   ])
+
+  function onAddTasksSubmit(title, description) {
+    const newTask = {
+      id: tasks.length + 1,
+      title: title,
+      description: description,
+      isCompleted: false,
+    }
+    setTasks([...tasks, newTask])
+  }
+
   function onTasksCompleted(taskId) {
     const newTasks = tasks.map((task) => {
       console.log(task)
@@ -44,7 +55,7 @@ function App() {
         <h1 className="text-3xl text-center text-zinc-50 font-bold">
           Gerenciador de Tarefas
         </h1>
-        <AddTask />
+        <AddTask onAddTasksSubmit={onAddTasksSubmit} />
         <Tasks
           tasks={tasks}
           onTasksCompleted={onTasksCompleted}
