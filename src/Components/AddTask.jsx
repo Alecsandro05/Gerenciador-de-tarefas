@@ -36,7 +36,7 @@ const AddTask = ({ onAddTasksSubmit }) => {
           }
           onAddTasksSubmit(title, description)
         }}
-        className="px-4 py-2 bg-green-600 w-full rounded-md font-medium"
+        className="px-4 py-2 bg-green-600 w-full rounded-md font-medium duration-500 hover:bg-slate-700 hover:text-white"
       >
         Adicionar
       </button>
