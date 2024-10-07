@@ -1,9 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AddTask from "./Components/AddTask"
 import Tasks from "./Components/Tasks"
 
 function App() {
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  )
+  useEffect(() => {
+    // essa função smpre será executada, sempre que o 'tasks' é alterado
+    console.log("Tasks foi alterado")
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+  }, [tasks])
 
   function onAddTasksSubmit(title, description) {
     const newTask = {
