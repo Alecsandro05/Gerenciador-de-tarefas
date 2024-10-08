@@ -12,3 +12,4 @@ Neste projeto eu pude aprender o básico de ReactJS para seguir nos estudos. Apr
 
 Link do Curso
 youtube: https://www.youtube.com/watch?v=2RWsLmu8yVc&t=6000s
+professor: https://github.com/felipemotarocha
